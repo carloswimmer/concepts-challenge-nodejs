@@ -30,11 +30,11 @@ function validateRepositoryId(request, response, next) {
   next()
 }
 
+app.use('/repositories/:id', findRepositoryId, validateRepositoryId)
+
 app.get("/repositories", (request, response) => {
   return response.json(repositories)
 });
-
-app.use('/repositories/:id', findRepositoryId, validateRepositoryId)
 
 app.post("/repositories", (request, response) => {
   const { title, url, techs } = request.body
